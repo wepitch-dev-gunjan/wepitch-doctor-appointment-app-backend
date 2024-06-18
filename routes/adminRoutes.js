@@ -18,7 +18,7 @@ router.get("/admins", adminAuth, getAdmins);
 router.get("/admin/profile", adminAuth, getAdmin);
 
 // Route to register a new admin
-router.post("/admin/register", adminAuth, registerAdmin);
+router.post("/admin/register", registerAdmin);
 
 // Route for admin login
 router.post("/admin/login", loginAdmin);

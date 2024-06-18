@@ -19,6 +19,7 @@ exports.getAdmins = async (req, res) => {
 // Controller to get a single admin profile
 exports.getAdmin = async (req, res) => {
   try {
+    console.log('admin')
     const admin = await Admin.findById(req.user._id);
     if (!admin) return res.status(404).json({ error: "Admin not found" });
     res.json(admin);

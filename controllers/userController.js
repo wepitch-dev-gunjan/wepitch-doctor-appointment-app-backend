@@ -8,6 +8,7 @@ const { JWT_SECRET } = process.env;
 // Controller to get all users (admin only)
 exports.getUsers = async (req, res) => {
   try {
+    console.log("user is hitting")
     const users = await User.find();
     res.json(users);
   } catch (error) {

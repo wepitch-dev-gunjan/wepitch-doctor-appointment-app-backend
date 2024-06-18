@@ -1,8 +1,4 @@
 const express = require("express");
-const http = require("http");
-const https = require("https");
-const fs = require("fs");
-const path = require("path");
 const mongoose = require("mongoose");
 const { readdirSync } = require("fs");
 const cors = require("cors");
@@ -18,13 +14,14 @@ const NODE_ENV = process.env.NODE_ENV || "development";
 // Parse URL-encoded form data
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 
 // CORS configuration
 app.use(
   cors({
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
+    origin: '*',
+    // methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    // credentials: true,
   })
 );
 
@@ -45,7 +42,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
+readdirSync("./routes").map((r) => app.use("/", require("./routes/" + r)));
 
 app.listen(PORT, () => {
   console.log(`Server started in ${NODE_ENV} mode at port: ${PORT}`);
